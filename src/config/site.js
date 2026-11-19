@@ -4,7 +4,7 @@ export const SITE = {
   phoneDisplay: '575 75 57 12', // how it is shown
   whatsapp: '995575755712', // wa.me/<number>
   email: 'info@sitefy.ge',
-  instagram: 'https://instagram.com/',
-  tiktok: 'https://tiktok.com/',
-  facebook: 'https://facebook.com/',
+  instagram: 'https://www.instagram.com/sitefy.ge',
+  tiktok: 'https://www.tiktok.com/@sitefy.ge',
+  facebook: 'https://www.facebook.com/profile.php?id=61592634688659',
 }
