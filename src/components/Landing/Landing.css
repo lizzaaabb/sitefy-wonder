@@ -395,7 +395,7 @@
 /* landing-mobile-B */
 @media (max-width: 640px) {
   .landing-logo { width: clamp(130px, 38vw, 180px); margin-bottom: 36px; }
-  .landing-title { font-size: clamp(20px, 6vw, 25px); letter-spacing: .16em; padding-inline-start: .16em; line-height: 1.7; font-weight: 500; }
+  .landing-title { font-size: clamp(20px, 6vw, 25px); letter-spacing: .16em; padding-inline-start: .16em; line-height: 1.45; font-weight: 500; }
   .landing-sub { flex-direction: column; gap: 16px; margin-top: 22px; font-size: 11px; letter-spacing: .26em; padding-inline-start: .26em; line-height: 2; max-width: 290px; text-wrap: balance; color: #ffffffb3; }
   .landing-sub i { display: block; width: 44px; }
   .landing-sub i:last-child { display: none; }
