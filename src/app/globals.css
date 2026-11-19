@@ -1,0 +1,39 @@
+/* FiraGO (Georgian + Latin), served from /public/fonts */
+@font-face {
+  font-family: FiraGO;
+  src: url(/fonts/FiraGO-Regular.woff) format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: FiraGO;
+  src: url(/fonts/FiraGO-Medium.woff) format("woff");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: FiraGO;
+  src: url(/fonts/FiraGO-SemiBold.woff) format("woff");
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* the other fonts come from next/font (layout.js) */
+:root {
+  --font-en: var(--font-montserrat, "Montserrat");
+  --font-ar: var(--font-kufi, "Noto Kufi Arabic");
+  --font-serif: var(--font-cormorant, "Cormorant Garamond");
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #000;
+  color: #f2f2f2;
+  font-family: FiraGO, "Noto Sans Georgian", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: border-box;
+}

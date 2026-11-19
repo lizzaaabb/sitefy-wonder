@@ -1,0 +1,496 @@
+/* Experience */
+
+.experience {
+  position: relative;
+  isolation: isolate;
+  background: #000;
+  color: #f2f2f2;
+  padding: clamp(90px, 13vh, 150px) clamp(16px, 4vw, 64px)
+    clamp(100px, 15vh, 170px);
+  overflow: hidden;
+  font-feature-settings: "case" on;
+  text-transform: uppercase;
+}
+.experience-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.experience-bg > * {
+  width: 100%;
+  height: 100%;
+}
+.experience-bg:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #000, #0000 22% 78%, #000);
+  pointer-events: none;
+}
+.experience-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(44px, 7vh, 76px);
+}
+.experience-eyebrow,
+.experience-title {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.experience-title {
+  transition-delay: 0.1s;
+}
+.experience-seen .experience-eyebrow,
+.experience-seen .experience-title {
+  opacity: 1;
+  transform: none;
+}
+.experience-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 18px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  padding-inline-start: 0.3em;
+  color: #ffffff8c;
+}
+.experience-eyebrow i {
+  width: 52px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6));
+}
+.experience-eyebrow i:last-child {
+  background: linear-gradient(270deg, transparent, rgba(255, 255, 255, 0.6));
+}
+.experience-title {
+  margin: 0;
+  font-weight: 500;
+  font-size: clamp(24px, 2.8vw, 44px);
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  padding-inline-start: 0.08em;
+  background: linear-gradient(100deg, #fff 0% 35%, #9a9aa2 50%, #fff 65% 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.experience-seen .experience-title {
+  animation: experience-sheen 8s ease-in-out 1.5s infinite;
+}
+.experience-card {
+  position: relative;
+  max-width: 1240px;
+  height: clamp(520px, 44vw, 620px);
+  margin: 0 auto;
+  border-radius: 34px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      60% 55% at 50% 100%,
+      rgba(255, 255, 255, 0.07),
+      transparent 70%
+    ),
+    linear-gradient(180deg, #ffffff0b, #ffffff04);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+  box-shadow:
+    0 50px 120px -40px #000000f2,
+    inset 0 0 0 1px #ffffff24,
+    inset 0 1px #ffffff38;
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s,
+    transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s;
+}
+.experience-seen .experience-card {
+  opacity: 1;
+  transform: none;
+}
+.experience-edge {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: -30%;
+  width: 30%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  box-shadow: 0 0 14px #ffffffb3;
+  pointer-events: none;
+}
+.experience-seen .experience-edge {
+  animation: experience-edge 8s ease-in-out 2.4s infinite;
+}
+.experience-wave {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.experience-wave-line,
+.experience-wave-glow,
+.experience-wave2 {
+  fill: none;
+  stroke: url(#sfWave);
+  vector-effect: non-scaling-stroke;
+}
+.experience-wave-line {
+  stroke-width: 1.6;
+  clip-path: inset(0 100% 0 0);
+}
+.experience-wave-glow {
+  stroke-width: 14;
+  opacity: 0;
+  filter: blur(10px);
+}
+.experience-wave2 {
+  stroke-width: 1;
+  opacity: 0;
+}
+.experience-veil {
+  opacity: 0;
+}
+.experience-seen .experience-wave-line {
+  animation: experience-reveal 2.4s cubic-bezier(0.6, 0, 0.2, 1) 0.6s forwards;
+}
+.experience-seen .experience-wave-glow {
+  animation:
+    experience-fade-to 2s ease 1.6s forwards,
+    experience-breathe 6s ease-in-out 3.6s infinite;
+}
+.experience-seen .experience-wave2 {
+  animation: experience-fade-to25 2s ease 1.8s forwards;
+}
+.experience-seen .experience-veil {
+  animation: experience-fade-to 2s ease 1.8s forwards;
+}
+.experience-points {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.experience-point {
+  position: absolute;
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.experience-copy {
+  position: absolute;
+  bottom: calc(100% + 0px);
+  left: 50%;
+  width: clamp(240px, 26vw, 340px);
+  transform: translate(-50%, -64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition:
+    opacity 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d),
+    transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d);
+}
+.experience-seen .experience-copy {
+  opacity: 1;
+  transform: translate(-50%, -54px);
+}
+.experience-num {
+  font-family: var(--font-en), sans-serif;
+  font-size: 24px;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  color: #fff9;
+}
+.experience-tick {
+  width: 1px;
+  height: 26px;
+  margin: 12px 0 14px;
+  background: linear-gradient(to bottom, #fff0, #fff9);
+}
+.experience-word {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.1vw, 32px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+}
+.experience-lead {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  color: #ffffffe6;
+}
+.experience-text {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.85;
+  letter-spacing: 0.06em;
+  color: #ffffff8c;
+}
+.experience-stem {
+  position: absolute;
+  bottom: 0;
+  left: -0.5px;
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, #fff0, #ffffff8c);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 1s cubic-bezier(0.6, 0, 0.2, 1) calc(var(--d) + 0.5s);
+}
+.experience-seen .experience-stem {
+  transform: scaleY(1);
+}
+.experience-dot {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  margin: 0 0 -5px -5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 0 3px #ffffff1f,
+    0 0 18px 4px #ffffffb3,
+    0 0 50px 10px #ffffff40;
+  opacity: 0;
+  transform: scale(0.3);
+  transition:
+    opacity 0.8s ease calc(var(--d) + 0.2s),
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.4) calc(var(--d) + 0.2s);
+}
+.experience-seen .experience-dot {
+  opacity: 1;
+  transform: none;
+  animation: experience-pulse 3.6s ease-in-out calc(var(--d) + 1.5s) infinite;
+}
+@keyframes experience-reveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes experience-fade-to {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes experience-fade-to25 {
+  to {
+    opacity: 0.25;
+  }
+}
+@keyframes experience-breathe {
+  0%,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes experience-pulse {
+  0%,
+  to {
+    box-shadow:
+      0 0 0 3px #ffffff1f,
+      0 0 18px 4px #ffffffb3,
+      0 0 50px 10px #ffffff40;
+  }
+  50% {
+    box-shadow:
+      0 0 0 7px #ffffff0d,
+      0 0 26px 6px #ffffffe6,
+      0 0 70px 16px #ffffff4d;
+  }
+}
+@keyframes experience-edge {
+  0% {
+    left: -30%;
+  }
+  55%,
+  to {
+    left: 100%;
+  }
+}
+@keyframes experience-sheen {
+  0%,
+  to {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0% 0;
+  }
+}
+.experience[data-lang="en"] {
+  font-family: var(--font-en), sans-serif;
+}
+.experience[data-lang="ar"] {
+  text-transform: none;
+}
+.experience[data-lang="ar"]
+  :is(
+    .experience-eyebrow,
+    .experience-title,
+    .experience-word,
+    .experience-lead,
+    .experience-text
+  ) {
+  font-family: var(--font-ar), sans-serif;
+  letter-spacing: 0;
+  padding-inline-start: 0;
+}
+.experience[data-lang="ar"] .experience-title {
+  font-size: clamp(26px, 3vw, 46px);
+  line-height: 1.6;
+}
+.experience[data-lang="ar"] .experience-lead {
+  font-size: 15px;
+}
+.experience[data-lang="ar"] .experience-text {
+  font-size: 13px;
+  line-height: 1.9;
+}
+@media (max-width: 1100px) {
+  .experience-card {
+    height: auto;
+    padding: 46px 26px 50px 58px;
+    border-radius: 26px;
+  }
+  .experience-wave {
+    display: none;
+  }
+  .experience-card:before {
+    content: "";
+    position: absolute;
+    left: 30px;
+    top: 50px;
+    bottom: 50px;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.5) 12%,
+      rgba(255, 255, 255, 0.5) 88%,
+      transparent
+    );
+    box-shadow: 0 0 10px #fff6;
+  }
+  .experience-points {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 46px;
+  }
+  .experience-point {
+    position: relative;
+    left: auto !important;
+    bottom: auto !important;
+    width: auto;
+    align-items: flex-start;
+  }
+  .experience-copy,
+  .experience-seen .experience-copy {
+    position: static;
+    width: auto;
+    transform: none;
+    align-items: flex-start;
+    text-align: start;
+  }
+  .experience-copy {
+    transform: translateY(14px);
+  }
+  .experience-tick,
+  .experience-stem {
+    display: none;
+  }
+  .experience-num {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .experience-dot {
+    left: -28px;
+    top: 9px;
+    bottom: auto;
+  }
+  .experience[dir="rtl"] .experience-card {
+    padding: 46px 58px 50px 26px;
+  }
+  .experience[dir="rtl"] .experience-card:before {
+    left: auto;
+    right: 30px;
+  }
+  .experience[dir="rtl"] .experience-dot {
+    left: auto;
+    right: -28px;
+    margin: 0 -5px 0 0;
+  }
+}
+@media (max-width: 640px) {
+  .experience-title {
+    letter-spacing: 0.04em;
+    padding-inline-start: 0.04em;
+  }
+  .experience-eyebrow {
+    font-size: 10px;
+  }
+  .experience-eyebrow i {
+    width: 30px;
+  }
+  .experience-word {
+    font-size: 22px;
+  }
+  .experience-lead {
+    font-size: 13px;
+  }
+  .experience-text {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .experience-seen .experience-title,
+  .experience-seen .experience-edge,
+  .experience-seen .experience-wave-glow,
+  .experience-seen .experience-dot {
+    animation: none;
+  }
+  .experience-wave-line {
+    clip-path: none;
+  }
+  .experience-wave-glow,
+  .experience-veil {
+    opacity: 1;
+  }
+  .experience-wave2 {
+    opacity: 0.25;
+  }
+  .experience-seen .experience-wave-line,
+  .experience-seen .experience-wave2,
+  .experience-seen .experience-veil {
+    animation: none;
+  }
+}
+
+/* particles inside the card: under the wave, points and texts */
+.experience-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}

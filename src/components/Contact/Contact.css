@@ -1,0 +1,428 @@
+/* Contact */
+
+.contact {
+  position: relative;
+  isolation: isolate;
+  background: #000;
+  color: #f2f2f2;
+  padding: clamp(100px, 15vh, 180px) clamp(16px, 4vw, 64px) 0;
+  overflow: hidden;
+  font-feature-settings: "case" on;
+  text-transform: uppercase;
+}
+.contact-glow {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: -35%;
+  width: min(1300px, 160vw);
+  aspect-ratio: 2 / 1;
+  transform: translate(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(225, 225, 240, 0.16),
+    rgba(200, 200, 230, 0.05) 55%,
+    transparent
+  );
+  pointer-events: none;
+  animation: contact-rise 10s ease-in-out infinite;
+}
+.contact-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.contact-inner > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 1.1s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.contact-inner > :nth-child(2) {
+  transition-delay: 0.08s;
+}
+.contact-inner > :nth-child(3) {
+  transition-delay: 0.16s;
+}
+.contact-inner > :nth-child(4) {
+  transition-delay: 0.24s;
+}
+.contact-inner > :nth-child(5) {
+  transition-delay: 0.36s;
+}
+.contact-inner > :nth-child(6) {
+  transition-delay: 0.48s;
+}
+.contact-inner > :nth-child(7) {
+  transition-delay: 0.56s;
+}
+.contact-inner > :nth-child(8) {
+  transition-delay: 0.66s;
+}
+.contact-seen .contact-inner > * {
+  opacity: 1;
+  transform: none;
+}
+.contact-mark {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 26px;
+  color: #fff;
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.45));
+}
+.contact-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  padding-inline-start: 0.3em;
+  color: #ffffff80;
+}
+.contact-eyebrow i {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6));
+}
+.contact-eyebrow i:last-child {
+  background: linear-gradient(270deg, transparent, rgba(255, 255, 255, 0.6));
+}
+.contact-title {
+  margin: 0;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 60px);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  padding-inline-start: 0.06em;
+  background: linear-gradient(100deg, #fff 0% 35%, #8f8f98 50%, #fff 65% 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.contact-seen .contact-title {
+  animation: contact-sheen 8s ease-in-out 1.5s infinite;
+}
+.contact-text {
+  max-width: 600px;
+  margin: 22px 0 0;
+  font-size: 13px;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  color: #ffffffa8;
+}
+.contact-number {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(14px, 1.6vw, 22px);
+  margin-top: clamp(40px, 6vh, 60px);
+  font-family: var(--font-en), sans-serif;
+  font-size: clamp(36px, 6vw, 88px);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: text-shadow 0.5s;
+}
+.contact-number:hover {
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+}
+.contact-ring {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: clamp(48px, 5vw, 70px);
+  height: clamp(48px, 5vw, 70px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #ffffff0a;
+}
+.contact-ring:before,
+.contact-ring:after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  animation: contact-ripple 2.8s ease-out infinite;
+}
+.contact-ring:after {
+  animation-delay: 1.4s;
+}
+.contact-ring svg {
+  width: 42%;
+  height: 42%;
+  animation: contact-wiggle 2.8s ease-in-out infinite;
+}
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: clamp(34px, 5vh, 48px);
+}
+.contact-primary,
+.contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  transition:
+    transform 0.35s,
+    box-shadow 0.35s,
+    background 0.35s,
+    border-color 0.35s;
+}
+.contact-primary svg,
+.contact-whatsapp svg {
+  width: 18px;
+  height: 18px;
+}
+.contact-primary {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 14px 40px -12px #ffffff80;
+}
+.contact-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 6px #ffffff14,
+    0 20px 50px -12px #ffffffa6;
+}
+.contact-whatsapp {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: #ffffff0a;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.contact-whatsapp svg {
+  color: #4ade80;
+}
+.contact-whatsapp:hover {
+  transform: translateY(-2px);
+  border-color: #4ade8099;
+  box-shadow: 0 0 34px -8px #4ade8073;
+}
+.contact-note {
+  margin: 18px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #ffffff73;
+}
+.contact-more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px 22px;
+  margin-top: clamp(44px, 7vh, 70px);
+}
+.contact-mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-en), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: #ffffffd1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.contact-mail svg {
+  width: 17px;
+  height: 17px;
+}
+.contact-mail:hover {
+  color: #fff;
+}
+.contact-sep {
+  width: 1px;
+  height: 18px;
+  background: #fff3;
+}
+.contact-follow {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: #ffffff73;
+}
+.contact-socials {
+  display: flex;
+  gap: 10px;
+}
+.contact-socials a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffffd9;
+  transition:
+    background 0.35s,
+    color 0.35s,
+    border-color 0.35s,
+    transform 0.35s;
+}
+.contact-socials a:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+  transform: translateY(-2px);
+}
+.contact-socials svg {
+  width: 18px;
+  height: 18px;
+}
+@keyframes contact-rise {
+  0%,
+  to {
+    opacity: 0.85;
+    transform: translate(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%) scale(1.06);
+  }
+}
+@keyframes contact-sheen {
+  0%,
+  to {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0% 0;
+  }
+}
+@keyframes contact-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  80%,
+  to {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+@keyframes contact-wiggle {
+  0%,
+  60%,
+  to {
+    transform: rotate(0);
+  }
+  66% {
+    transform: rotate(-12deg);
+  }
+  72% {
+    transform: rotate(10deg);
+  }
+  78% {
+    transform: rotate(-6deg);
+  }
+  84% {
+    transform: rotate(3deg);
+  }
+}
+.contact[data-lang="en"] {
+  font-family: var(--font-en), sans-serif;
+}
+.contact[data-lang="ar"] {
+  text-transform: none;
+}
+.contact[data-lang="ar"]
+  :is(
+    .contact-eyebrow,
+    .contact-title,
+    .contact-text,
+    .contact-primary,
+    .contact-whatsapp,
+    .contact-note,
+    .contact-follow,
+    .footer-partners,
+    .footer-rights
+  ) {
+  font-family: var(--font-ar), sans-serif;
+  letter-spacing: 0;
+  padding-inline-start: 0;
+}
+.contact[data-lang="ar"] .contact-title {
+  font-size: clamp(30px, 4.2vw, 62px);
+  line-height: 1.5;
+}
+.contact[data-lang="ar"] .contact-text {
+  font-size: 16px;
+}
+.contact[data-lang="ar"] :is(.contact-primary, .contact-whatsapp) {
+  font-size: 15px;
+}
+.contact[data-lang="ar"] :is(.contact-note, .contact-follow, .footer) {
+  font-size: 12px;
+}
+@media (max-width: 640px) {
+  .contact-title {
+    letter-spacing: 0.03em;
+    padding-inline-start: 0.03em;
+  }
+  .contact-eyebrow {
+    font-size: 10px;
+  }
+  .contact-eyebrow i {
+    width: 28px;
+  }
+  .contact-number {
+    font-size: clamp(30px, 10vw, 42px);
+    gap: 12px;
+  }
+  .contact-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .contact-primary,
+  .contact-whatsapp {
+    width: 100%;
+  }
+  .contact-more {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-sep {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-glow,
+  .contact-seen .contact-title,
+  .contact-ring:before,
+  .contact-ring:after,
+  .contact-ring svg {
+    animation: none;
+  }
+  .contact-inner > * {
+    transition: none;
+  }
+}
+
+/* ar-fix: the Arabic reset above removed the buttons' right padding, so the content stuck to the edge */
+.contact[data-lang="ar"] :is(.contact-primary, .contact-whatsapp) {
+  padding-inline: 30px;
+  line-height: 1.4;
+}
