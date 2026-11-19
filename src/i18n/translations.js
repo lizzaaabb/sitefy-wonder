@@ -82,7 +82,7 @@ export const translations = {
     },
     contact: {
       eyebrow: 'დავიწყოთ',
-      title: 'შექმენი დაუვიწყარი გამოცდილება',
+      title: 'თუ ვერ ჯერდები ჩვეულებრივს, დაგვიკავშირდი ჩვენ',
       text: 'დაგვირეკე ან მოგვწერე WhatsApp-ში. მოგისმენთ და ერთად მოვიფიქრებთ, როგორი უნდა იყოს შენი საიტი.',
       callLabel: 'დაგვირეკე',
       call: 'დარეკვა',
@@ -168,7 +168,7 @@ export const translations = {
     },
     contact: {
       eyebrow: "Let's begin",
-      title: 'Build something people remember.',
+      title: "If ordinary isn't enough, talk to us.",
       text: "Call us or message us on WhatsApp. We'll listen and work out together what your website should be.",
       callLabel: 'Call us',
       call: 'Call now',
@@ -257,7 +257,7 @@ export const translations = {
     },
     contact: {
       eyebrow: 'لنبدأ',
-      title: 'اصنع تجربة لا تُنسى',
+      title: 'إذا كنت لا ترضى بالعادي، تواصل معنا',
       text: 'اتصل بنا أو راسلنا على واتساب. سنستمع إليك ونفكر معًا كيف يجب أن يكون موقعك.',
       callLabel: 'اتصل بنا',
       call: 'اتصل الآن',
