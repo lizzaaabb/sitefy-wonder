@@ -1,29 +1,34 @@
 'use client'
 
-// Language of the whole site (ka / en / ar). Remembers the choice in the browser
-// and sets <html lang dir> so Arabic turns right-to-left.
+// Language of the whole site (ka / en / ar). It comes from the address (/geo, /en, /ara);
+// switching updates the address instantly (no reload) and sets <html lang dir> (Arabic = right-to-left).
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { LANGUAGES, translations } from './translations'
+import { langToSlug, slugToLang } from './routes'
 
 const STORAGE_KEY = 'sitefy-lang'
 const LanguageContext = createContext(null)
 
-// the language the visitor picked earlier (null = never picked -> Georgian)
-function savedLanguage() {
+function remember(code) {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved && translations[saved]) return saved
+    localStorage.setItem(STORAGE_KEY, code)
   } catch {}
-  return null
+  // the cookie lets sitefy.ge (no language) open the language picked last time
+  document.cookie = `${STORAGE_KEY}=${code}; path=/; max-age=31536000; samesite=lax`
 }
 
-export function LanguageProvider({ children, defaultLang = 'ka' }) {
-  const [lang, setLangState] = useState(defaultLang)
+export function LanguageProvider({ children, initialLang = 'ka' }) {
+  const [lang, setLangState] = useState(initialLang)
 
+  // address changed from outside (back / forward buttons)
+  useEffect(() => setLangState(initialLang), [initialLang])
   useEffect(() => {
-    const found = savedLanguage()
-    if (found && found !== lang) setLangState(found)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const onPop = () => {
+      const code = slugToLang(window.location.pathname.split('/')[1])
+      if (code) setLangState(code)
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
   }, [])
 
   const dir = LANGUAGES.find((l) => l.code === lang)?.dir || 'ltr'
@@ -33,14 +38,14 @@ export function LanguageProvider({ children, defaultLang = 'ka' }) {
     html.lang = lang
     html.dir = dir
     html.dataset.lang = lang
+    remember(lang)
   }, [lang, dir])
 
   const setLang = useCallback((code) => {
     if (!translations[code]) return
     setLangState(code)
-    try {
-      localStorage.setItem(STORAGE_KEY, code)
-    } catch {}
+    const { search, hash } = window.location
+    window.history.pushState(null, '', `/${langToSlug(code)}${search}${hash}`)
   }, [])
 
   const value = useMemo(() => ({ lang, dir, setLang, t: translations[lang] }), [lang, dir, setLang])

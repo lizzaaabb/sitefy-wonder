@@ -1,6 +1,5 @@
 import { Cormorant_Garamond, Montserrat, Noto_Kufi_Arabic } from 'next/font/google'
 import { preload } from 'react-dom'
-import { LanguageProvider } from '@/i18n/LanguageContext'
 import './globals.css'
 
 // Latin text (EN), Arabic text (AR) and the serif accent. Georgian uses FiraGO (globals.css).
@@ -35,7 +34,7 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        {children}
       </body>
     </html>
   )
